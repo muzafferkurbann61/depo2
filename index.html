@@ -1,105 +1,130 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>ISMIN'in Kırık Kalbi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acı Ama Öldürmez</title>
 
 <style>
-body{
-    margin:0;
-    padding:0;
-    background: radial-gradient(circle, #111, #000);
-    height:100vh;
-    overflow:hidden;
-    font-family: Arial, sans-serif;
-    color:white;
-    text-align:center;
-}
-
-.container{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-}
-
-h1{
-    font-size:40px;
-    color:#ff4d4d;
-}
-
-p{
-    font-size:16px;
-    color:#ccc;
-    max-width:400px;
-    margin:auto;
-    line-height:1.6;
-}
-
-.heart{
-    position:absolute;
-    color:red;
-    font-size:20px;
-    animation:fall 6s linear infinite;
-}
-
-@keyframes fall{
-    0%{
-        transform:translateY(-10vh);
-        opacity:1;
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", sans-serif;
     }
-    100%{
-        transform:translateY(110vh);
-        opacity:0;
+
+    body {
+        background: #000;
+        color: #fff;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
     }
-}
+
+<meta name="google-site-verification" content="TUWe4pBCcGUY3pA9nEy2HeBc-TBLrxkQGMOD6YbnBsk" />
+
+    .container {
+        text-align: center;
+        opacity: 0;
+        animation: fadeIn 2s ease forwards;
+        z-index: 2;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+        animation: slideUp 2s ease forwards;
+    }
+
+    p {
+        font-size: 1rem;
+        opacity: 0.7;
+        animation: fadeText 4s ease forwards;
+        animation-delay: 2s;
+    }
+
+    .heart {
+        font-size: 4rem;
+        margin: 20px 0;
+        animation: pulse 1.5s infinite;
+    }
+
+    @keyframes fadeIn {
+        to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+        from { transform: translateY(40px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeText {
+        to { opacity: 0.8; }
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2); color: red; }
+        100% { transform: scale(1); }
+    }
+
+    /* Ana parıltı (göz yaşı efekti) */
+    body::before {
+        content: "";
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background:
+            radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.06), transparent 40%),
+            radial-gradient(circle at 70% 60%, rgba(255, 0, 0, 0.05), transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03), transparent 60%);
+        animation: bgMove 12s ease-in-out infinite alternate;
+    }
+
+    /* ekstra yumuşak ışık katmanı */
+    body::after {
+        content: "";
+        position: absolute;
+        width: 150%;
+        height: 150%;
+        background: radial-gradient(circle, rgba(255,255,255,0.04), transparent 70%);
+        filter: blur(40px);
+        animation: glow 8s ease-in-out infinite alternate;
+    }
+
+    @keyframes bgMove {
+        from { transform: translate(-10%, -10%) scale(1); }
+        to { transform: translate(5%, 5%) scale(1.1); }
+    }
+
+    @keyframes glow {
+        from { opacity: 0.3; transform: scale(1); }
+        to { opacity: 0.6; transform: scale(1.2); }
+    }
 </style>
+
 </head>
-index.html
+
 <body>
 
 <div class="container">
-<h1>ISMIN'in Kırık Kalbi 💔</h1>
+    <div class="heart">💔</div>
 
-<p>
-Bazı insanlar hayatına gelmez…  
-sadece kalbinde bir iz bırakır.  
+    <h1>Acıtır… Ama Öldürmez</h1>
 
-Ben hâlâ aynı yerdeyim.  
-Ama içimdeki biri artık eskisi gibi değil.
-</p>
-
-</div>
-<div style="position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); text-align: center;">
-    <p style="color: #ff4d4d; font-family: sans-serif; font-size: 14px; margin-bottom: 10px;">Acısada Öldürmez...</p>
-    <audio id="muzik" controls loop style="filter: invert(1); width: 250px; opacity: 0.8;">
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-    </audio>
+    <p>
+        "Gözlerin dolarken bile sustun…  
+        İşte en çok o sessizlik kırdı beni."
+    </p>
 </div>
 
-
-
-<script>
-
-function createHeart(){
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML="💔";
-
-    heart.style.left = Math.random()*100 + "vw";
-    heart.style.animationDuration = (3 + Math.random()*5) + "s";
-    heart.style.fontSize = (15 + Math.random()*25) + "px";
-
-    document.body.appendChild(heart);
-
-    setTimeout(()=>{
-        heart.remove();
-    },7000);
-}
-
-setInterval(createHeart,300);
-</script>
+<audio autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
 
 </body>
 </html>
